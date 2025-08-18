@@ -1,0 +1,250 @@
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    /* Hero Section - Original Layout Preserved Exactly */
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 30px;
+        text-align: left;
+        min-height: calc(100vh - 100px);
+        position: relative;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .about-content {
+        max-width: 700px;
+        margin-right: 48%;
+    }
+
+    /* Original Typography Preserved */
+    .intro {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        color: #5c5c5c;
+        margin-bottom: 10px;
+        font-weight: bolder;
+    }
+
+    .about h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: bold;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .description {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        line-height: 1.6;
+        color: #ccc;
+        margin-bottom: 30px;
+    }
+
+    /* Original Buttons Preserved */
+    .buttons {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border: 1px solid white;
+        border-radius: 30px;
+        color: white;
+        text-decoration: none;
+        transition: background 0.3s;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+    }
+
+    .btn:hover {
+        background: white;
+        color: black;
+    }
+
+    /* Original Social Icons Preserved */
+    .social-icons a {
+        color: white;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        margin-right: 15px;
+        transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #888;
+    }
+
+    /* Original Gradient Text Preserved */
+    .about h1 span {
+        color: transparent;
+        background-image: linear-gradient(90deg, #ffffff, #888888);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .about-image {
+        position: absolute;
+        left: 65%;
+        max-width: 300px;
+        z-index: 0;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Enhanced Responsive Adjustments (Original Breakpoints Preserved) */
+    @media (max-width: 1200px) {
+        .about-content {
+            margin-right: 40%;
+        }
+
+        .about-image {
+            left: 60%;
+            max-width: 280px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .about-content {
+            margin-right: 30%;
+        }
+
+        .about-image {
+            left: 55%;
+            max-width: 250px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 100%;
+            margin-right: 0;
+        }
+
+        .buttons {
+            justify-content: center;
+        }
+
+        .social-icons {
+            justify-content: center;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .about-image {
+            display: none;
+        }
+
+        .description br {
+            display: none;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .about {
+            padding: 40px 15px;
+        }
+
+        .buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .social-icons {
+            width: 100%;
+            justify-content: space-around;
+        }
+    }
+
+    /* New breakpoint for very small devices */
+    @media (max-width: 400px) {
+        .about {
+            padding: 30px 10px;
+        }
+
+        .intro {
+            font-size: 1.6rem;
+        }
+
+        .about h1 {
+            font-size: 2rem;
+        }
+    }
+
+
+    /*------- one by one animation -------*/
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    #typed-text::after {
+        content: '|';
+        animation: blink 0.7s infinite;
+        color: #00ffff;
+    }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+
+    /*----- image background shadow ------*/
+
+    .shadow-animate img {
+        border-radius: 12px;
+        transition: box-shadow 0.6s ease-in-out;
+        animation: shadowPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes shadowPulse {
+        0% {
+            box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        }
+
+        50% {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        100% {
+            box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        }
+    }
+
+    

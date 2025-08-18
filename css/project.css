@@ -1,0 +1,419 @@
+/* Base styles with improved responsive units */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --portfolio-item-width: clamp(300px, 30vw, 358px);
+  --portfolio-item-height: clamp(380px, 45vw, 420px);
+  --portfolio-image-height: clamp(150px, 25vw, 200px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.portfolio-section {
+  font-family: 'Roboto', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(30px, 5vw, 40px) clamp(15px, 3vw, 20px);
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.portfolio-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: clamp(20px, 3vw, 30px);
+  color: #ffffff;
+}
+
+.portfolio-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 20px);
+    margin-bottom: clamp(15px, 2vw, 20px);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  cursor: pointer;
+  padding: 5px clamp(8px, 2vw, 12px);
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  color: #ccc;
+  border-bottom: 2px solid white;
+}
+
+.tab-btn i {
+  margin-right: clamp(5px, 1vw, 8px);
+}
+
+.divider-line {
+  border: 0;
+  height: 2px;
+  background: #e0e0e0;
+  margin: clamp(15px, 3vw, 20px) 0 clamp(30px, 4vw, 40px);
+}
+
+.portfolio-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 30px);
+  justify-content: center;
+  width: 100%;
+}
+
+.portfolio-item {
+  background: rgb(255 255 255 / 0%);
+  border-radius: 8px;
+  padding: clamp(20px, 4vw, 30px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: var(--portfolio-item-height);
+  width: var(--portfolio-item-width);
+  box-sizing: border-box;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: var(--portfolio-image-height);
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: clamp(10px, 2vw, 15px);
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-box {
+  background: #000;
+  border: 1px solid #2c2f38;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Make all boxes the same size */
+  width: 250px;        /* adjust as needed */
+  height: 250px;       /* adjust as needed */
+  align-items: flex-start;
+}
+
+
+
+.portfolio-item h3 {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  margin-bottom: clamp(8px, 1vw, 10px);
+  color: #ffffff;
+}
+
+.item-subtitle {
+  color: #cccccc;
+  line-height: 1.5;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  margin-bottom: clamp(5px, 1vw, 8px);
+}
+
+.item-badge {
+  position: absolute;
+  top: clamp(15px, 3vw, 20px);
+  right: clamp(15px, 3vw, 20px);
+  background: #2c2f38;
+  color: white;
+  padding: 3px clamp(8px, 2vw, 12px);
+  border-radius: 20px;
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Animation effects */
+.portfolio-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.portfolio-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal styles */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.image-modal .modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  animation: fadeIn 0.4s ease;
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+.image-modal .close-btn {
+  position: absolute;
+  top: clamp(15px, 3vw, 25px);
+  right: clamp(20px, 5vw, 40px);
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.image-modal .close-btn:hover {
+  color: #ccc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Scrolling portfolio */
+.portfolio-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  bottom: 10px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  width: clamp(30px, 8vw, 40px);
+  height: clamp(30px, 8vw, 40px);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+/* Tab content scrolling */
+.tab-content {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scroll-behavior: smooth;
+}
+
+.tab-content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+  background: #ffffff3d;
+  border-radius: 10px;
+}
+
+/* GitHub link */
+.github-link {
+  color: #3e3e3e;
+  font-size: clamp(1.5rem, 3vw, 1rem);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.github-link:hover {
+  color: #616161;
+}
+
+/* Tech stack */
+#tech {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+.category-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #3a3d46;
+}
+
+.category-header {
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tag {
+  background: #1f2127;
+  color: #b3b3b3;
+  font-size: 0.8rem;
+  border-radius: 9999px;
+  padding: 0.35rem 0.8rem;
+  user-select: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.tag:hover {
+  background: #2c2f38;
+  color: #ffffff;
+}
+
+/* Language badges */
+.lang-container {
+  display: block;
+  margin-top: 6px;
+}
+
+.lang-badge {
+  display: inline-block;
+  background: rgb(60 57 57 / 75%);
+  color: #fff;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+  padding: 2px 6px;
+  border-radius: 50px;
+  margin-right: 4px;
+  text-transform: uppercase;
+}
+
+.lang-badge:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .portfolio-items {
+    gap: clamp(15px, 4vw, 20px);
+  }
+  
+  .portfolio-item {
+    width: clamp(280px, 80vw, 358px);
+    height: auto;
+    min-height: var(--portfolio-item-height);
+  }
+  
+  .tab-content {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  
+  .portfolio-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tab-btn {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+  
+  .scroll-btn {
+    display: none;
+  }
+
+  .portfolio-items {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 20px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .portfolio-item {
+    scroll-snap-align: start;
+    min-width: 85%;
+  }
+  
+  .image-modal .close-btn {
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .portfolio-item {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .portfolio-image {
+    height: clamp(120px, 30vw, 150px);
+  }
+  
+  .item-badge {
+    top: 10px;
+    right: 10px;
+  }
+}
